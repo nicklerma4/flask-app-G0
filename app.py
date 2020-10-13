@@ -26,8 +26,9 @@ def factorial_resp(num):
         return jsonify(math.factorial(num))
 
 # endpoint for fibonacci
-@app.route('/fibonacci/<int:fibnum')
-def fibonacci_resp(fibnum):
+# @app.route('/fibonacci/<int:fibnum')
+# def fibonacci_resp(fibnum):
+#     return "something"
 
 # endpoint for prime number check
 @app.route('/is-prime/<int:primenum>')
