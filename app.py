@@ -1,5 +1,5 @@
 from flask import Flask, jsonify
-import math
+import math, hashlib
 
 # instantiate flask object
 app = Flask(__name__)
@@ -9,14 +9,23 @@ app = Flask(__name__)
 def hello():
     return "Hello, World!"
 
-@app.route('/factorial/<int:i>')
-def factorial_resp(i):
-    if i == 1:
-        return i
+# endpoint for md5 hash
+@app.route('/md5/<string:md5str>')
+def hash_md5(md5str):
+    hash_obj = hashlib.md5(md5str.encode())
+    md5_hash = hash_obj.hexdigest()
+    return jsonify(md5_hash)
+
+
+# endpoint for factorial
+@app.route('/factorial/<int:num>')
+def factorial_resp(num):
+    if num == 1:
+        return jsonify(num)
     else:
-        return math.factorial(int(i))
-    
-    return jsonify(factorial_resp)
+        return jsonify(math.factorial(num))
+
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
