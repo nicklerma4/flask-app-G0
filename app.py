@@ -24,6 +24,26 @@ def factorial_resp(num):
         return jsonify(input = num, output = num)
     else:
         return jsonify(input = num, output = math.factorial(num))
+    
+
+# endpoint for fibonacci
+@app.route('/fibonacci/<int:x>')
+def fibonacci(x):
+    return jsonify(
+        input = x,
+        output = fib(x)
+        )
+def fib(n):
+    if n < 0:
+        print("Input needs to be positive.")
+    else:
+        a, b =0, 1
+        array = [0]
+        while b <= n:
+            array.append(b)
+            a, b = b, a+b
+    return array
+
 
 # endpoint for prime number check
 @app.route('/is-prime/<int:primenum>')
