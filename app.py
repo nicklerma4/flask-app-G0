@@ -14,16 +14,16 @@ def hello():
 def hash_md5(md5str):
     hash_obj = hashlib.md5(md5str.encode())
     md5_hash = hash_obj.hexdigest()
-    return jsonify(md5_hash)
+    return jsonify(input = md5str , output = md5_hash)
 
 
 # endpoint for factorial
 @app.route('/factorial/<int:num>')
 def factorial_resp(num):
     if num == 1:
-        return jsonify(num)
+        return jsonify(input = num, output = num)
     else:
-        return jsonify(math.factorial(num))
+        return jsonify(input = num, output = math.factorial(num))
 
 # endpoint for prime number check
 @app.route('/is-prime/<int:primenum>')
@@ -31,11 +31,11 @@ def prime_check(primenum):
     if primenum > 1:
         for i in range(2, primenum):
             if (primenum % i) == 0:
-                return jsonify(False)
+                return jsonify(input = primenum, output = False)
             else:
-                return jsonify(True)
+                return jsonify(input = primenum, output = True)
     else:
-        return jsonify(False)
+        return jsonify(input = primenum, output = False)
 
     
 
