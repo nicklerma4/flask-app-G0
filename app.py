@@ -25,7 +25,23 @@ def factorial_resp(num):
     else:
         return jsonify(math.factorial(num))
 
+# endpoint for fibonacci
+@app.route('/fibonacci/<int:fibnum')
+def fibonacci_resp(fibnum):
 
+# endpoint for prime number check
+@app.route('/is-prime/<int:primenum>')
+def prime_check(primenum):
+    if primenum > 1:
+        for i in range(2, primenum):
+            if (primenum % i) == 0:
+                return False
+            else:
+                return True
+    else:
+        return False
+
+    
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
