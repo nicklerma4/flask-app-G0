@@ -1,4 +1,5 @@
 from flask import Flask, jsonify
+import math
 
 # instantiate flask object
 app = Flask(__name__)
@@ -10,10 +11,11 @@ def hello():
 
 @app.route('/factorial/<int:i>')
 def factorial_resp(i):
-    if i == 0:
-        return 1
+    if i == 1:
+        return i
     else:
-        return i * factorial(i-1)
+        return math.factorial(int(i))
+    
     return jsonify(factorial_resp)
 
 if __name__ == "__main__":
