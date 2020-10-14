@@ -27,7 +27,7 @@ def factorial_resp(num):
     
 
 # endpoint for fibonacci
-@app.route('/fibonacci/<int(signed=True):n>')
+@app.route('/fibonacci/<int(signed=True):x>')
 def fibonacci(x):
     return jsonify(
         input = x,
