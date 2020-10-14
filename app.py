@@ -49,7 +49,7 @@ def fib(n):
 @app.route('/is-prime/<int:primenum>')
 def prime_check(primenum):
     if primenum > 1:
-        for i in range(2, primenum):
+        for i in range(1, primenum):
             if (primenum % i) == 0:
                 return jsonify(input = primenum, output = False)
             else:
