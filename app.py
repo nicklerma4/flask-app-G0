@@ -27,17 +27,22 @@ def factorial_resp(num):
     
 
 # endpoint for fibonacci
-@app.route('/fibonacci/<int:n>')
+@app.route('/fibonacci/<int(signed=True):n>')
+def fibonacci(x):
+    return jsonify(
+        input = x,
+        output = fib(x)
+        )
 def fib(n):
     if n < 0:
-        print("Input needs to be positive.")
+        return(f"Input needs to be positive.")
     else:
         a, b =0, 1
         array = [0]
         while b <= n:
             array.append(b)
             a, b = b, a+b
-    return jsonify(input = n, output = array)
+    return array
 
 
 # endpoint for prime number check
