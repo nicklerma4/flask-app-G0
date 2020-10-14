@@ -57,7 +57,8 @@ def prime_check(primenum):
     else:
         return jsonify(input = primenum, output = False)
     
-    
+# Send a message to Slack
+@app.route('/slack-alert/<string:msg>')   
 def slackAlert(msg):
   slack_client = SlackClient('xoxb-73266387591-1439363667153-tNYVjpucG4Mds1i0svkZLUbg')
   attempt_alert = slack_client.api_call("chat.postMessage",
